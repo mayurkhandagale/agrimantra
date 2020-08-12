@@ -29,11 +29,12 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validateClient(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
+  console.log(error)
   let client = new Client({ name: req.body.name, number: req.body.number });
   client = await client.save();
 
   res.send(client);
+  console.log(client, 'client')
 });
 
 function validateClient(client) {
