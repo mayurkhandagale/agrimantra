@@ -1,6 +1,6 @@
-import React from "react";
-import { Layout, Card } from "antd";
-import Navbar from "./navbar/navbar";
+import React from 'react';
+import { Layout, Card } from 'antd';
+import Navbar from './navbar/navbar';
 
 const MainLayout = (props) => {
   return (
@@ -12,10 +12,10 @@ const MainLayout = (props) => {
         />
         <main>
           <Layout.Content>
-            <Card style={{ padding: "10px 160px 10px 160px " }}>
-              {/* {childern} */}
-              {props.children}
-            </Card>
+            {/* <Card style={{ padding: "10px 160px 10px 160px " }}> */}
+            {/* {childern} */}
+            {props.children}
+            {/* </Card> */}
           </Layout.Content>
         </main>
       </Layout>

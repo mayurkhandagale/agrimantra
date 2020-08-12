@@ -13,7 +13,7 @@ const Client = mongoose.model(
       maxlength: 50,
     },
     number: {
-      type: String,
+      type: Number,
       required: true,
       minlength: 10,
       maxlength: 10,
@@ -29,17 +29,18 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const { error } = validateClient(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
+  console.log(error)
   let client = new Client({ name: req.body.name, number: req.body.number });
   client = await client.save();
 
   res.send(client);
+  console.log(client, 'client')
 });
 
 function validateClient(client) {
   const schema = {
     name: Joi.string().min(3).required(),
-    number: Joi.string().min(10).max(10),
+    number: Joi.number().min(10).max(10),
   };
 
   return Joi.validate(client, schema);
